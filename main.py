@@ -19,11 +19,12 @@ def ielasit_chatu():
   for line in fh:
     lines.append(line)
   fh.close()
-  return jsonify({"Chats":lines})
+  return jsonify({"chats":lines})
 
 @app.route('/chats/suuti', methods = ['POST'])
 def suutiit_zinju():
   dati = request.json
+  print(dati)
   with open("chats.txt", "a", newline="") as f:
     f.write(dati["chats"] + "\n")
   return ielasit_chatu()
